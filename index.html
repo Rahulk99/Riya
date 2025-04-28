@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Happy Birthday Riya 🎂💖</title>
+  <title>Happy Birthday Riiu 🎂💖</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -91,25 +91,38 @@
       0% { transform: translateY(0) rotate(45deg); }
       100% { transform: translateY(-100vh) rotate(45deg); }
     }
+    #aareeText {
+      font-size: 24px;
+      color: #ff4d6d;
+      margin-top: 30px;
+      animation: aareeDance 3s infinite;
+    }
+    @keyframes aareeDance {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(10px); }
+      50% { transform: translateX(-10px); }
+      75% { transform: translateX(10px); }
+      100% { transform: translateX(0); }
+    }
   </style>
 </head>
 <body>
 
 <div id="passwordScreen">
-  <h1>🔒 Enter Password to Celebrate with Riya</h1>
+  <h1>🔒 Enter Password to Celebrate with Riiu</h1>
   <input type="password" id="passwordInput" placeholder="Enter password">
   <button onclick="checkPassword()">Unlock</button>
 </div>
 
 <div id="birthdayScreen">
-  <h1>🎉 Happy Birthday Riya 🎉</h1>
+  <h1>🎉 Happy Birthday Riiu 🎉</h1>
   <audio autoplay loop>
     <source src="music/happy.mp3" type="audio/mpeg">
     Your browser does not support audio.
   </audio>
 
   <div class="message-section">
-    <h2>Dear Riya,</h2>
+    <h2>Dear Riiu,</h2>
     <p>
       On this special day, I want to tell you just how much you mean to me. ❤️  
       Your smile lights up my world, your laugh makes my heart dance,  
@@ -126,13 +139,25 @@
     </p>
   </div>
 
+  <div class="message-section">
+    <h2>💬 Some Classic Riiu Punchlines 💬</h2>
+    <p><strong>"I’m just a girly pop!"</strong> 🌸</p>
+    <p><strong>"I’m just a weak independent woman!"</strong> 😂</p>
+    <p><strong>"Kese he aap, DOST?"</strong> 🤗</p>
+    <p><strong>"Kya kr rhe ho, DOST?"</strong> 🤭</p>
+    <p><strong>"Aareee... aaree aaree aaree..."</strong> (literally for everything!) 😆</p>
+    <p>Our one and only cutie pie — <strong>Riiu</strong> 🧸💖</p>
+  </div>
+
+  <div id="aareeText">Aaree... Aaree... Aaree... ❤️</div>
+
   <h2>💖 Our Memories Together 💖</h2>
   <div class="gallery" id="gallery">
-    <!-- Example images -->
+    <!-- Add your images here -->
     <img src="images/riya1.jpg" alt="Memory 1">
     <img src="images/riya2.jpg" alt="Memory 2">
     <img src="images/riya3.jpg" alt="Memory 3">
-    <!-- Add more as needed -->
+    <!-- More images if you want -->
   </div>
 
   <div class="message-section">
@@ -148,7 +173,7 @@
 <div class="hearts" id="hearts"></div>
 
 <script>
-  const correctPassword = "iloveriya"; // Change to your own password!
+  const correctPassword = "iloveriya"; // <-- set your password here
 
   function checkPassword() {
     const userPassword = document.getElementById('passwordInput').value;
@@ -157,7 +182,7 @@
       document.getElementById('birthdayScreen').style.display = 'block';
       createHearts();
     } else {
-      alert('Wrong password! Please try again.');
+      alert('Wrong password! Try again, Dost! 😅');
     }
   }
 
