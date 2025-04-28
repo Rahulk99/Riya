@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Riya!</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    #passwordScreen, #birthdayScreen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    input[type="password"], button {
+      padding: 10px;
+      margin: 10px;
+      font-size: 16px;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .gallery img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+<div id="passwordScreen">
+  <h2>Enter Password to Continue</h2>
+  <input type="password" id="passwordInput" placeholder="Enter password">
+  <button onclick="checkPassword()">Submit</button>
+</div>
+
+<div id="birthdayScreen">
+  <h1>🎉 Happy Birthday Riya! 🎉</h1>
+  <p>Wishing you a day filled with love, laughter, and happiness!</p>
+
+  <h2>Our Memories 💖</h2>
+  <div class="gallery" id="gallery">
+    <!-- Add images here -->
+    <img src="images/riya1.jpg" alt="Memory 1">
+    <img src="images/riya2.jpg" alt="Memory 2">
+    <!-- You can add more images -->
+  </div>
+</div>
+
+<script>
+  const correctPassword = "yourpassword123"; // Change this to your secret password
+
+  function checkPassword() {
+    const userPassword = document.getElementById('passwordInput').value;
+    if (userPassword === correctPassword) {
+      document.getElementById('passwordScreen').style.display = 'none';
+      document.getElementById('birthdayScreen').style.display = 'flex';
+    } else {
+      alert('Wrong password! Try again.');
+    }
+  }
+
+  window.onload = function() {
+    document.getElementById('passwordScreen').style.display = 'flex';
+  }
+</script>
+
+</body>
+</html>
