@@ -79,6 +79,21 @@
       background: pink;
       border-radius: 50%;
     }
+    #backgroundCollage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('images/riya1.jpg'), url('images/riya2.jpg'), url('images/riya3.jpg');
+      background-size: cover;
+      background-position: center;
+      background-blur: 10px;
+      background-color: rgba(0, 0, 255, 0.3); /* Blue tint */
+      filter: blur(10px); /* Blur effect */
+      z-index: -1;
+      opacity: 0.6; /* Slightly faded */
+    }
     .heart::before {
       top: -10px;
       left: 0;
@@ -106,7 +121,9 @@
     }
   </style>
 </head>
+
 <body>
+<div id="backgroundCollage"></div>
 
 <div id="passwordScreen">
   <h1>🔒 Enter Password to Celebrate with Riiu</h1>
