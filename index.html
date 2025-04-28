@@ -135,7 +135,7 @@
     </p>
     <p>
       Always Yours,<br>  
-      <strong>❤️ [Your Name] ❤️</strong>
+      <strong>❤️ Rahul ❤️</strong>
     </p>
   </div>
 
@@ -176,15 +176,23 @@
   const correctPassword = "CuTu"; // <-- set your password here
 
   function checkPassword() {
-    const userPassword = document.getElementById('passwordInput').value;
-    if (userPassword === correctPassword) {
-      document.getElementById('passwordScreen').style.display = 'none';
-      document.getElementById('birthdayScreen').style.display = 'block';
-      createHearts();
-    } else {
-      alert('Wrong password! Try again, Dost! 😅');
-    }
+  const userPassword = document.getElementById('passwordInput').value;
+  const bgMusic = document.getElementById('backgroundMusic');
+
+  if (userPassword === correctPassword) {
+    document.getElementById('passwordScreen').style.display = 'none';
+    document.getElementById('birthdayScreen').style.display = 'block';
+    createHearts();
+
+    // Play background music
+    bgMusic.muted = false;
+    bgMusic.play();
+
+  } else {
+    alert('Wrong password! Try again, Dost! 😅');
   }
+}
+
 
   function createHearts() {
     const heartsContainer = document.getElementById('hearts');
