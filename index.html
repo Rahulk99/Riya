@@ -150,6 +150,32 @@
       75% { transform: translateX(10px); }
       100% { transform: translateX(0); }
     }
+
+    #specialHeading {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 50px;
+  background: linear-gradient(90deg, #ff7eb9, #7afcff, #feff9c, #fff740, #ff7eb9);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientMove 8s ease infinite, glow 2s ease-in-out infinite alternate;
+  font-family: 'Poppins', cursive, sans-serif;
+}
+
+/* Gradient color animation */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Glowing light effect */
+@keyframes glow {
+  from { text-shadow: 0 0 5px #ff7eb9, 0 0 10px #7afcff, 0 0 15px #feff9c; }
+  to { text-shadow: 0 0 10px #ff7eb9, 0 0 20px #7afcff, 0 0 30px #feff9c; }
+}
+
   </style>
 </head>
 
@@ -165,7 +191,7 @@
 
 
 <div id="passwordScreen">
-  <h1>🔒 Enter Password to Celebrate with Riiu</h1>
+  <h1 id="specialHeading">🧿 Areee... Dost! Secret Celebration Ahead!</h1>
   <input type="password" id="passwordInput" placeholder="Enter password">
   <button onclick="checkPassword()">Unlock</button>
 </div>
