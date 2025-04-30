@@ -79,59 +79,6 @@
       background: pink;
       border-radius: 50%;
     }
-#backgroundCollage {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -2;
-}
-
-.collage-img {
-  position: absolute;
-  width: 300px;
-  height: 200px;
-  object-fit: cover;
-  opacity: 0.7; /* slightly more visible */
-  filter: blur(4px) grayscale(20%);
-  animation: float 30s infinite linear;
-}
-#blueOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 100, 255, 0.15);
-  backdrop-filter: blur(3px);
-  z-index: -1;
-}
-/* Blue transparent layer on top */
-.collage-img {
-  position: absolute;
-  width: 200px;
-  height: 150px;
-  object-fit: cover;
-  opacity: 0.6;
-  filter: blur(3px) grayscale(20%);
-  animation: floatUpDown infinite ease-in-out;
-  border-radius: 12px;
-}
-
-@keyframes floatUpDown {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-20px); }
-  100% { transform: translateY(0); }
-}
-
-/* Floating animation */
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0px); }
-  
     .heart::before {
       top: -10px;
       left: 0;
@@ -144,6 +91,7 @@
       0% { transform: translateY(0) rotate(45deg); }
       100% { transform: translateY(-100vh) rotate(45deg); }
     }
+
     #aareeText {
       font-size: 24px;
       color: #ff4d6d;
@@ -159,185 +107,190 @@
     }
 
     #specialHeading {
-  font-size: 2rem;
-  text-align: center;
-  margin-top: 50px;
-  background: linear-gradient(90deg, #ff7eb9, #7afcff, #feff9c, #fff740, #ff7eb9);
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: gradientMove 8s ease infinite, glow 2s ease-in-out infinite alternate;
-  font-family: 'Poppins', cursive, sans-serif;
-}
+      font-size: 2rem;
+      text-align: center;
+      margin-top: 50px;
+      background: linear-gradient(90deg, #ff7eb9, #7afcff, #feff9c, #fff740, #ff7eb9);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: gradientMove 8s ease infinite, glow 2s ease-in-out infinite alternate;
+      font-family: 'Poppins', cursive, sans-serif;
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #ff7eb9, 0 0 10px #7afcff, 0 0 15px #feff9c; }
+      to { text-shadow: 0 0 10px #ff7eb9, 0 0 20px #7afcff, 0 0 30px #feff9c; }
+    }
 
-/* Gradient color animation */
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+    #backgroundCollage {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -2;
+    }
+    .collage-img {
+      position: absolute;
+      width: 200px;
+      height: 150px;
+      object-fit: cover;
+      opacity: 0.6;
+      filter: blur(3px) grayscale(20%);
+      animation: floatUpDown 8s ease-in-out infinite;
+      border-radius: 12px;
+    }
+    @keyframes floatUpDown {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-15px); }
+      100% { transform: translateY(0); }
+    }
 
-/* Glowing light effect */
-@keyframes glow {
-  from { text-shadow: 0 0 5px #ff7eb9, 0 0 10px #7afcff, 0 0 15px #feff9c; }
-  to { text-shadow: 0 0 10px #ff7eb9, 0 0 20px #7afcff, 0 0 30px #feff9c; }
-}
-
+    #blueOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 100, 255, 0.15);
+      backdrop-filter: blur(3px);
+      z-index: -1;
+    }
   </style>
 </head>
-
 <body>
-  <div id="backgroundCollage"></div>
-<div id="blueOverlay"></div>
-<div id="backgroundCollage">
-  <img src="images/riya1.jpeg" class="collage-img">
-  <img src="images/riya2.jpeg" class="collage-img">
-  <img src="images/riya3.jpeg" class="collage-img">
-  <img src="images/riya4.jpeg" class="collage-img">
-  <img src="images/riya6.jpeg" class="collage-img">
-  <img src="images/riya7.jpeg" class="collage-img">
-  <img src="images/riya8.jpeg" class="collage-img">
-  <img src="images/riya9.jpeg" class="collage-img">
-  <img src="images/riya10.jpeg" class="collage-img">
-  <img src="images/riya11.jpeg" class="collage-img">
-  <img src="images/riya12.jpeg" class="collage-img">
-  <img src="images/riya13.jpeg" class="collage-img">
-  <img src="images/riya14.jpeg" class="collage-img">
+  <div id="backgroundCollage">
     <img src="images/riya1.jpeg" class="collage-img">
-  <img src="images/riya2.jpeg" class="collage-img">
-  <img src="images/riya3.jpeg" class="collage-img">
-  <img src="images/riya4.jpeg" class="collage-img">
-  <img src="images/riya6.jpeg" class="collage-img">
-  <img src="images/riya7.jpeg" class="collage-img">
-  <img src="images/riya8.jpeg" class="collage-img">
-  <img src="images/riya9.jpeg" class="collage-img">
-  <img src="images/riya10.jpeg" class="collage-img">
-  <img src="images/riya11.jpeg" class="collage-img">
-  <img src="images/riya12.jpeg" class="collage-img">
-  <img src="images/riya13.jpeg" class="collage-img">
-  <img src="images/riya14.jpeg" class="collage-img">
-    <img src="images/riya1.jpeg" class="collage-img">
-  <img src="images/riya2.jpeg" class="collage-img">
-  <img src="images/riya3.jpeg" class="collage-img">
-  <img src="images/riya4.jpeg" class="collage-img">
-  <img src="images/riya6.jpeg" class="collage-img">
-  <img src="images/riya7.jpeg" class="collage-img">
-  <img src="images/riya8.jpeg" class="collage-img">
-  <img src="images/riya9.jpeg" class="collage-img">
-  <img src="images/riya10.jpeg" class="collage-img">
-  <img src="images/riya11.jpeg" class="collage-img">
-  <img src="images/riya12.jpeg" class="collage-img">
-  <img src="images/riya13.jpeg" class="collage-img">
-  <img src="images/riya14.jpeg" class="collage-img">
+    <img src="images/riya2.jpeg" class="collage-img">
+    <img src="images/riya3.jpeg" class="collage-img">
+    <img src="images/riya4.jpeg" class="collage-img">
+    <img src="images/riya6.jpeg" class="collage-img">
+    <img src="images/riya7.jpeg" class="collage-img">
+    <img src="images/riya8.jpeg" class="collage-img">
+    <img src="images/riya9.jpeg" class="collage-img">
+    <img src="images/riya10.jpeg" class="collage-img">
+    <img src="images/riya11.jpeg" class="collage-img">
+    <img src="images/riya12.jpeg" class="collage-img">
+    <img src="images/riya13.jpeg" class="collage-img">
+    <img src="images/riya14.jpeg" class="collage-img">
+  </div>
   <div id="blueOverlay"></div>
-</div>
 
-
-<div id="passwordScreen">
-  <h1 id="specialHeading">🧿 Areee... Dost! Secret Celebration Ahead!</h1>
-  <input type="password" id="passwordInput" placeholder="Enter password">
-  <button onclick="checkPassword()">Unlock</button>
-</div>
-
-<div id="birthdayScreen">
-  <h1>🎉 Happy Birthday Riiu 🎉</h1>
-  <audio autoplay loop>
-    <source src="music/happy.mp3" type="audio/mpeg">
-    Your browser does not support audio.
-  </audio>
-
-  <div class="message-section">
-    <h2>Dear Riiu,</h2>
-    <p>
-      On this special day, I want to tell you just how much you mean to me. ❤️  
-      Your smile lights up my world, your laugh makes my heart dance,  
-      and your love gives meaning to my life.  
-    </p>
-    <p>
-      Thank you for being you – beautiful, kind, smart, and full of magic. ✨  
-      I can't wait to create a lifetime of memories with you.  
-      May your birthday be as wonderful as you are!
-    </p>
-    <p>
-      Always Yours,<br>  
-      <strong>❤️ Rahul ❤️</strong>
-    </p>
+  <div id="passwordScreen">
+    <h1 id="specialHeading">👿 Areee... Dost! Secret Celebration Ahead!</h1>
+    <input type="password" id="passwordInput" placeholder="Enter password">
+    <button onclick="checkPassword()">Unlock</button>
   </div>
 
-  <div class="message-section">
-    <h2>💬 Some Classic Riiu Punchlines 💬</h2>
-    <p><strong>"I’m just a girly pop!"</strong> 🌸</p>
-    <p><strong>"I’m just a weak independent woman!"</strong> 😂</p>
-    <p><strong>"Kese he aap, DOST?"</strong> 🤗</p>
-    <p><strong>"Kya kr rhe ho, DOST?"</strong> 🤭</p>
-    <p><strong>"Aareee... aaree aaree aaree..."</strong> (literally for everything!) 😆</p>
-    <p>Our one and only cutie pie — <strong>Riiu</strong> 🧸💖</p>
+  <div id="birthdayScreen">
+    <h1>🎉 Happy Birthday Riiu 🎉</h1>
+    <audio id="backgroundMusic" autoplay loop muted>
+      <source src="music/happy.mp3" type="audio/mpeg">
+      Your browser does not support audio.
+    </audio>
+
+    <div class="message-section">
+      <h2>Dear Riiu,</h2>
+      <p>
+        On this special day, I want to tell you just how much you mean to me. ❤️<br>
+        Your smile lights up my world, your laugh makes my heart dance,<br>
+        and your love gives meaning to my life.
+      </p>
+      <p>
+        Thank you for being you – beautiful, kind, smart, and full of magic. ✨<br>
+        I can't wait to create a lifetime of memories with you.<br>
+        May your birthday be as wonderful as you are!
+      </p>
+      <p>
+        Always Yours,<br>
+        <strong>❤️ Rahul ❤️</strong>
+      </p>
+    </div>
+
+    <div class="message-section">
+      <h2>💬 Some Classic Riiu Punchlines 💬</h2>
+      <p><strong>"I’m just a girly pop!"</strong> 🌸</p>
+      <p><strong>"I’m just a weak independent woman!"</strong> 😂</p>
+      <p><strong>"Kese he aap, DOST?"</strong> 🤗</p>
+      <p><strong>"Kya kr rhe ho, DOST?"</strong> 🧯</p>
+      <p><strong>"Aareee... aaree aaree aaree..."</strong> — for everything! 😆</p>
+      <p>Our one and only cutie pie — <strong>Riiu</strong> 🧸💖</p>
+    </div>
+
+    <div id="aareeText">Aaree... Aaree... Aaree... ❤️</div>
+
+    <h2>💖 My Riiu 💖</h2>
+    <div class="gallery">
+      <img src="images/riya1.jpeg">
+      <img src="images/riya2.jpeg">
+      <img src="images/riya3.jpeg">
+      <img src="images/riya10.jpeg">
+      <img src="images/riya11.jpeg">
+      <img src="images/riya13.jpeg">
+    </div>
+
+    <div class="message-section">
+      <h2>Birthday Wishes for You 🎂</h2>
+      <p>
+        🎈 May your dreams come true today and always!<br>
+        🎈 May laughter and love surround you forever.<br>
+        🎈 I wish you endless happiness, health, and success.
+      </p>
+    </div>
   </div>
 
-  <div id="aareeText">Aaree... Aaree... Aaree... ❤️</div>
+  <div class="hearts" id="hearts"></div>
 
-  <h2>💖 My Riiu 💖</h2>
-  <div class="gallery" id="gallery">
-    <!-- Add your images here -->
-    <img src="images/riya1.jpeg" alt="Memory 1">
-    <img src="images/riya2.jpeg" alt="Memory 2">
-    <img src="images/riya3.jpeg" alt="Memory 3">
-      <img src="images/riya10.jpeg" alt="Memory 3">
-  <img src="images/riya11.jpeg" alt="Memory 3"">
-  <img src="images/riya13.jpeg" alt="Memory 3">
-    <!-- More images if you want -->
-  </div>
+  <script>
+    const correctPassword = "CuTu";
 
-  <div class="message-section">
-    <h2>Birthday Wishes for You 🎂</h2>
-    <p>
-      🎈 May your dreams come true today and always!<br>
-      🎈 May laughter and love surround you forever.<br>
-      🎈 I wish you endless happiness, health, and success.
-    </p>
-  </div>
-</div>
+    function checkPassword() {
+      const userPassword = document.getElementById('passwordInput').value;
+      const bgMusic = document.getElementById('backgroundMusic');
 
-<div class="hearts" id="hearts"></div>
+      if (userPassword === correctPassword) {
+        document.getElementById('passwordScreen').style.display = 'none';
+        document.getElementById('birthdayScreen').style.display = 'block';
+        createHearts();
+        bgMusic.muted = false;
+        bgMusic.play();
+      } else {
+        alert('Wrong password! Try again, Dost! 😅');
+      }
+    }
 
-<script>
-  const correctPassword = "CuTu"; // <-- set your password here
+    function createHearts() {
+      const heartsContainer = document.getElementById('hearts');
+      setInterval(() => {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+        heartsContainer.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }, 300);
+    }
 
-  function checkPassword() {
-  const userPassword = document.getElementById('passwordInput').value;
-  const bgMusic = document.getElementById('backgroundMusic');
+    function randomizeCollagePositions() {
+      const images = document.querySelectorAll('.collage-img');
+      images.forEach(img => {
+        const top = Math.floor(Math.random() * 90);
+        const left = Math.floor(Math.random() * 90);
+        img.style.top = top + '%';
+        img.style.left = left + '%';
+      });
+    }
 
-  if (userPassword === correctPassword) {
-    document.getElementById('passwordScreen').style.display = 'none';
-    document.getElementById('birthdayScreen').style.display = 'block';
-    createHearts();
-
-    // Play background music
-    bgMusic.muted = false;
-    bgMusic.play();
-
-  } else {
-    alert('Wrong password! Try again, Dost! 😅');
-  }
-}
-
-
-  function createHearts() {
-    const heartsContainer = document.getElementById('hearts');
-    setInterval(() => {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (3 + Math.random() * 3) + 's';
-      heartsContainer.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
-    }, 300);
-  }
-
-  window.onload = function() {
-    document.getElementById('passwordScreen').style.display = 'flex';
-  }
-</script>
-
+    window.onload = function() {
+      document.getElementById('passwordScreen').style.display = 'flex';
+      randomizeCollagePositions();
+    }
+  </script>
 </body>
 </html>
