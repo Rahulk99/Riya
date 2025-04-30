@@ -79,14 +79,14 @@
       background: pink;
       border-radius: 50%;
     }
-    #backgroundCollage {
+#backgroundCollage {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  z-index: -1;
+  z-index: -2;
 }
 
 .collage-img {
@@ -98,17 +98,28 @@
   filter: blur(4px) grayscale(20%);
   animation: float 30s infinite linear;
 }
-
-/* Blue transparent layer on top */
 #blueOverlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 100, 255, 0.15); /* slightly lighter blue */
+  background: rgba(0, 100, 255, 0.15);
   backdrop-filter: blur(3px);
+  z-index: -1;
 }
+/* Blue transparent layer on top */
+.collage-img {
+  position: absolute;
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  opacity: 0.6;
+  filter: blur(3px) grayscale(20%);
+  animation: floatUpDown infinite ease-in-out;
+  border-radius: 12px;
+}
+
 
 
 /* Random placement */
@@ -180,6 +191,8 @@
 </head>
 
 <body>
+  <div id="backgroundCollage"></div>
+<div id="blueOverlay"></div>
 <div id="backgroundCollage">
   <img src="images/riya1.jpeg" class="collage-img">
   <img src="images/riya2.jpeg" class="collage-img">
