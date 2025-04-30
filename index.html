@@ -110,12 +110,13 @@
       font-size: 2rem;
       text-align: center;
       margin-top: 50px;
-      background: linear-gradient(90deg, #ff7eb9, #7afcff, #feff9c, #fff740, #ff7eb9);
+      background: linear-gradient(90deg, #ffffff, #ffe4f0, #ffffff);
       background-size: 300% 300%;
       -webkit-background-clip: text;
       color: transparent;
       animation: gradientMove 8s ease infinite, glow 2s ease-in-out infinite alternate;
       font-family: 'Poppins', cursive, sans-serif;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
     @keyframes gradientMove {
       0% { background-position: 0% 50%; }
@@ -138,12 +139,12 @@
     }
     .collage-img {
       position: absolute;
-      width: 200px;
-      height: 150px;
+      width: 260px;
+      height: 190px;
       object-fit: cover;
-      opacity: 0.6;
+      opacity: 0.65;
       filter: blur(3px) grayscale(20%);
-      animation: floatUpDown 8s ease-in-out infinite;
+      animation: floatUpDown 10s ease-in-out infinite;
       border-radius: 12px;
     }
     @keyframes floatUpDown {
@@ -166,19 +167,25 @@
 </head>
 <body>
   <div id="backgroundCollage">
-    <img src="images/riya1.jpeg" class="collage-img">
-    <img src="images/riya2.jpeg" class="collage-img">
-    <img src="images/riya3.jpeg" class="collage-img">
-    <img src="images/riya4.jpeg" class="collage-img">
-    <img src="images/riya6.jpeg" class="collage-img">
-    <img src="images/riya7.jpeg" class="collage-img">
-    <img src="images/riya8.jpeg" class="collage-img">
-    <img src="images/riya9.jpeg" class="collage-img">
-    <img src="images/riya10.jpeg" class="collage-img">
-    <img src="images/riya11.jpeg" class="collage-img">
-    <img src="images/riya12.jpeg" class="collage-img">
-    <img src="images/riya13.jpeg" class="collage-img">
-    <img src="images/riya14.jpeg" class="collage-img">
+    <script>
+      const collageImages = [
+        "riya1.jpeg", "riya2.jpeg", "riya3.jpeg", "riya4.jpeg",
+        "riya6.jpeg", "riya7.jpeg", "riya8.jpeg", "riya9.jpeg",
+        "riya10.jpeg", "riya11.jpeg", "riya12.jpeg", "riya13.jpeg", "riya14.jpeg"
+      ];
+      const collageContainer = document.getElementById('backgroundCollage');
+      for (let i = 0; i < 2; i++) {
+        collageImages.forEach((img, index) => {
+          const el = document.createElement('img');
+          el.src = `images/${img}`;
+          el.className = 'collage-img';
+          el.style.top = Math.random() * 90 + '%';
+          el.style.left = Math.random() * 90 + '%';
+          el.style.animationDuration = (8 + Math.random() * 4) + 's';
+          collageContainer.appendChild(el);
+        });
+      }
+    </script>
   </div>
   <div id="blueOverlay"></div>
 
