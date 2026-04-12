@@ -1,0 +1,627 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* Added A4 page rule to help standardize PDF printing */
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+
+  .newspaper {
+    background: #fdf8f0;
+    color: #1a1008;
+    font-family: 'EB Garamond', Georgia, serif;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0;
+    border: 2px solid #2a1a08;
+    box-shadow: 4px 4px 0 #b8975a;
+  }
+
+  .paper-texture {
+    background-image: 
+      repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(180,150,90,0.08) 28px),
+      repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(180,150,90,0.04) 61px);
+  }
+
+  .masthead {
+    border-bottom: 4px double #2a1a08;
+    padding: 10px 20px 8px;
+    text-align: center;
+    background: #fdf8f0;
+    position: relative;
+  }
+
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #2a1a08;
+    padding-bottom: 6px;
+    margin-bottom: 6px;
+    font-size: 11px;
+    font-family: 'EB Garamond', serif;
+    color: #5a3a1a;
+  }
+
+  .edition-badge {
+    background: #8b1a1a;
+    color: #fdf8f0;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .paper-name {
+    font-family: 'UnifrakturMaguntia', 'Playfair Display', serif;
+    font-size: 62px;
+    line-height: 1;
+    color: #1a0a00;
+    letter-spacing: -1px;
+    margin: 4px 0 2px;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+  }
+
+  .paper-subtitle {
+    font-family: 'EB Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #5a3a1a;
+    margin-bottom: 4px;
+  }
+
+  .headline-special {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 900;
+    text-align: center;
+    line-height: 1.05;
+    margin: 10px 20px 6px;
+    color: #1a0a00;
+    padding-bottom: 8px;
+    border-bottom: 3px solid #1a0a00;
+  }
+
+  .subheadline {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-style: italic;
+    text-align: center;
+    color: #5a3a1a;
+    margin: 4px 20px 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #c8a870;
+  }
+
+  .columns {
+    display: grid;
+    gap: 0;
+    padding: 0 0 0;
+  }
+
+  .col-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .col-2 { grid-template-columns: 1.4fr 1fr; }
+  .col-2b { grid-template-columns: 1fr 1.4fr; }
+  .col-full { grid-template-columns: 1fr; }
+
+  .article {
+    padding: 12px 16px;
+    border-right: 1px solid #c8a870;
+  }
+  .article:last-child { border-right: none; }
+
+  .article-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 6px;
+    color: #1a0a00;
+    border-bottom: 1px solid #c8a870;
+    padding-bottom: 5px;
+  }
+
+  .article-headline.sm {
+    font-size: 15px;
+  }
+
+  .article-byline {
+    font-size: 11px;
+    font-style: italic;
+    color: #8a6030;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .article-body {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 14px;
+    line-height: 1.65;
+    color: #2a1a08;
+    text-align: justify;
+  }
+
+  .article-body p + p {
+    text-indent: 1.2em;
+  }
+
+  .drop-cap::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 900;
+    float: left;
+    line-height: 0.78;
+    margin: 4px 6px 0 0;
+    color: #8b1a1a;
+  }
+
+  .section-divider {
+    border: none;
+    border-top: 3px double #2a1a08;
+    margin: 0;
+  }
+
+  .section-divider.thin {
+    border-top: 1px solid #c8a870;
+  }
+
+  .section-label {
+    background: #1a0a00;
+    color: #fdf8f0;
+    text-align: center;
+    font-family: 'EB Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 3px 0;
+  }
+
+  .birth-box {
+    background: #1a0a00;
+    color: #fdf8f0;
+    text-align: center;
+    padding: 16px 12px;
+    margin: 0;
+  }
+
+  .birth-box .big-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 1;
+    color: #d4a830;
+  }
+
+  .birth-box .birth-label {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c8a870;
+    margin-top: 4px;
+  }
+
+  .birth-box .birth-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: #fdf8f0;
+    margin-top: 8px;
+    line-height: 1.2;
+  }
+
+  .fact-box {
+    background: #f5ede0;
+    border: 1px solid #c8a870;
+    border-left: 4px solid #8b1a1a;
+    padding: 10px 12px;
+    margin: 10px 0 0;
+  }
+
+  .fact-box .fact-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    color: #8b1a1a;
+  }
+
+  .fact-item {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #2a1a08;
+    padding: 2px 0;
+    border-bottom: 1px dotted #c8a870;
+    display: flex;
+    gap: 6px;
+  }
+
+  .fact-item:last-child { border-bottom: none; }
+  .fact-item .bullet { color: #8b1a1a; font-weight: 700; flex-shrink: 0; }
+
+  .horoscope-box {
+    background: linear-gradient(135deg, #1a0a30 0%, #2a1a50 100%);
+    padding: 12px;
+    text-align: center;
+    color: #f0e8d0;
+  }
+
+.horoscope-box .sign {
+    font-size: 36px;
+    line-height: 1;
+    margin-bottom: 4px;
+    /* This forces the printer to use a symbol-friendly font */
+    font-family: "Segoe UI Symbol", "Apple Symbols", "Arial Unicode MS", sans-serif;
+  }
+
+  .horoscope-box .sign-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #d4a830;
+  }
+
+  .horoscope-box .sign-dates {
+    font-size: 11px;
+    color: #c8a870;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  .horoscope-box .sign-text {
+    font-size: 13px;
+    line-height: 1.6;
+    font-style: italic;
+    color: #e8dfc0;
+    text-align: left;
+  }
+
+  .music-item {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 2px 0;
+    border-bottom: 1px dotted #c8a870;
+    font-size: 13px;
+  }
+  .music-item:last-child { border-bottom: none; }
+  .music-num { color: #8b1a1a; font-weight: 700; min-width: 18px; font-size: 12px; }
+  .music-title { font-weight: 700; color: #1a0a00; }
+  .music-artist { color: #5a3a1a; font-style: italic; }
+
+  .quote-box {
+    background: #f5ede0;
+    border-top: 3px solid #1a0a00;
+    border-bottom: 3px solid #1a0a00;
+    padding: 8px 16px;
+    text-align: center;
+    margin: 0;
+  }
+
+  .quote-box blockquote {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    line-height: 1.5;
+    color: #1a0a00;
+  }
+
+  .quote-box .quote-attr {
+    font-size: 12px;
+    color: #8a6030;
+    margin-top: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .footer-bar {
+    background: #1a0a00;
+    color: #c8a870;
+    text-align: center;
+    font-size: 11px;
+    padding: 5px;
+    letter-spacing: 2px;
+    font-family: 'EB Garamond', serif;
+  }
+
+  .advert {
+    border: 2px solid #2a1a08;
+    padding: 8px;
+    text-align: center;
+    margin: 8px 0 0;
+    background: #f5ede0;
+  }
+
+  .advert .ad-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #8b1a1a;
+  }
+
+  .advert .ad-body {
+    font-size: 12px;
+    font-style: italic;
+    color: #5a3a1a;
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  .stat-row {
+    display: flex;
+    justify-content: space-around;
+    gap: 8px;
+    padding: 10px 8px;
+    background: #f0e8d8;
+    border-bottom: 1px solid #c8a870;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: #8b1a1a;
+    line-height: 1;
+  }
+
+  .stat-lbl {
+    font-size: 10px;
+    color: #5a3a1a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 2px;
+  }
+
+  .film-box {
+    margin-top: 8px;
+  }
+  .film-item {
+    display: flex;
+    gap: 6px;
+    align-items: baseline;
+    font-size: 13px;
+    padding: 2px 0;
+    border-bottom: 1px dotted #c8a870;
+  }
+  .film-item:last-child { border-bottom: none; }
+  .film-title { font-weight: 700; color: #1a0a00; }
+  .film-detail { color: #5a3a1a; font-style: italic; }
+
+  .heart-accent {
+    color: #8b1a1a;
+    font-size: 16px;
+    margin: 0 4px;
+  }
+
+  .initial-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #1a0a00;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+    border: 3px solid #d4a830;
+  }
+
+  .initial-circle span {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: #d4a830;
+  }
+
+  .ornament {
+    text-align: center;
+    color: #c8a870;
+    font-size: 18px;
+    padding: 2px 0;
+    letter-spacing: 8px;
+  }
+  
+  .mini-trend-box {
+    background: #fdf8f0;
+    border: 1px solid #c8a870;
+    border-top: 3px solid #d4a830;
+    padding: 10px;
+    margin-top: 15px;
+  }
+</style>
+
+<div class="newspaper paper-texture">
+
+  <div class="masthead">
+    <div class="top-bar">
+      <span>SATURDAY, MAY 1, 2004</span>
+      <span class="edition-badge">Special Birthday Edition</span>
+      <span>PRICE: PRICELESS</span>
+    </div>
+    <div class="paper-name">The Daily Chronicle</div>
+    <div class="paper-subtitle">Established in Honour of Riya Gupta &nbsp;✦&nbsp; Serving Joy Since May 1, 2004</div>
+  </div>
+
+  <div class="headline-special">
+    A STAR IS BORN!<br>
+    <span style="font-size:26px; font-style:italic; font-weight:400;">Riya Arrives in the World — Bringing Light, Love & Laughter</span>
+  </div>
+  <div class="subheadline">
+    The universe celebrates as the world welcomes its most precious gift &nbsp;✦&nbsp; This edition commemorates a truly extraordinary day
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-item"><div class="stat-num">21</div><div class="stat-lbl">Years Young Today</div></div>
+    <div class="stat-item"><div class="stat-num">May 1</div><div class="stat-lbl">Labour Day</div></div>
+    <div class="stat-item"><div class="stat-num">Taurus</div><div class="stat-lbl">Zodiac Sign</div></div>
+    <div class="stat-item"><div class="stat-num">Emerald</div><div class="stat-lbl">Birthstone</div></div>
+    <div class="stat-item"><div class="stat-num">Beaver</div><div class="stat-lbl">Native Zodiac</div></div>
+    <div class="stat-item"><div class="stat-num">Lily</div><div class="stat-lbl">Birth Flower</div></div>
+  </div>
+
+  <hr class="section-divider">
+  <div class="section-label">World News — The Day You Were Born</div>
+
+  <div class="columns col-3">
+
+    <div class="article">
+      <div class="article-headline">Europe Grows Bigger: Ten Nations Join the EU on Your Birthday</div>
+      <div class="article-byline">By Our European Correspondent</div>
+      <div class="article-body drop-cap">
+        <p>In a historic moment that shook the old continent, the European Union welcomed ten new member states on this very day — May 1, 2004. Cyprus, the Czech Republic, Estonia, Hungary, Latvia, Lithuania, Malta, Poland, Slovakia, and Slovenia joined, marking the largest single expansion in the EU's history.</p>
+        <p>Millions celebrated across Europe as borders opened and flags flew. Ireland's Prime Minister led the festivities, and EU membership rose from 15 to 25 nations in a single day. The world changed for hundreds of millions of people — and so did it for Riya.</p>
+      </div>
+      <div class="fact-box">
+        <div class="fact-title">Fast Facts — May 1, 2004</div>
+        <div class="fact-item"><span class="bullet">✦</span> The EU expanded from 15 to 25 members</div>
+        <div class="fact-item"><span class="bullet">✦</span> George W. Bush was US President</div>
+        <div class="fact-item"><span class="bullet">✦</span> Tony Blair was UK Prime Minister</div>
+        <div class="fact-item"><span class="bullet">✦</span> Manmohan Singh soon to become India's PM</div>
+        <div class="fact-item"><span class="bullet">✦</span> Oil prices hit 14-year record high</div>
+      </div>
+    </div>
+
+    <div class="article" style="padding:0;">
+      <div class="birth-box">
+        <div class="big-num">01</div>
+        <div class="birth-label">May — The Day The World Changed</div>
+        <div class="initial-circle"><span>RG</span></div>
+        <div class="birth-name">Riya Gupta<br>enters the world</div>
+        <div style="margin-top:10px; font-size:12px; color:#c8a870; font-style:italic; line-height:1.6;">Born on May Day, a day when the whole world already celebrates — but now it celebrates you.</div>
+      </div>
+      <div style="padding: 12px 14px 0;">
+        <div class="article-headline sm">Your Birth Day: Labour Day &amp; International Workers' Day</div>
+        <div class="article-body" style="font-size:13px; margin-top:6px;">
+          May 1st is observed worldwide as International Labour Day. Born on this date, Riya came into a world already in festive spirits — streets adorned, parades marching, and the global community united in celebration. Some call it coincidence. We call it destiny.
+        </div>
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="horoscope-box">
+      <div class="sign" style="font-family: 'Segoe UI Symbol', 'Apple Symbols', 'Arial Unicode MS', sans-serif;">&#9801;</div> 
+      <div class="sign-name">Taurus</div>
+        <div class="sign-dates">April 20 – May 20</div>
+        <div class="sign-text">Born under the Bull, Riya carries the strength, grace, and steadfast loyalty of Taurus. Ruled by Venus — the planet of love and beauty — she is gifted with an eye for the finer things and a heart of extraordinary warmth. She is dependable, creative, and fiercely devoted to those she loves.</div>
+      </div>
+      <div style="padding: 10px 0 0;">
+        <div class="article-headline sm">Celebrity Companions: Born in May 2004</div>
+        <div class="article-body" style="font-size:13px;">
+          <p>The class of May 2004 is in excellent company. Across the globe that spring, many remarkable souls entered the world alongside Riya, joining what would become a generation known for its creativity, digital fluency, and cultural curiosity.</p>
+        </div>
+        <div class="fact-box" style="margin-top:8px;">
+          <div class="fact-title">Famous Taureans</div>
+          <div class="fact-item"><span class="bullet">✦</span> Adele (born May 5, 1988)</div>
+          <div class="fact-item"><span class="bullet">✦</span> Dwayne Johnson (May 2, 1972)</div>
+          <div class="fact-item"><span class="bullet">✦</span> Sachin Tendulkar (April 24, 1973)</div>
+          <div class="fact-item"><span class="bullet">✦</span> Audrey Hepburn (May 4, 1929)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider" style="page-break-before: always;">
+
+  <div class="section-label">Entertainment & Culture — What Was Trending</div>
+
+  <div class="columns col-2">
+    <div class="article">
+      <div class="article-headline">The Soundtrack of Your Birth Year</div>
+      <div class="article-byline">From Our Music Desk</div>
+      <div class="article-body" style="font-size:13px; margin-bottom:8px;">
+        The airwaves of 2004 were echoing with unforgettable melodies across India and the globe. Here are the songs that filled the world when Riya arrived:
+      </div>
+      <div class="music-item"><span class="music-num">#1</span><span class="music-title">Main Hoon Na &nbsp;</span><span class="music-artist">— Sonu Nigam, Shreya Ghoshal</span></div>
+      <div class="music-item"><span class="music-num">#2</span><span class="music-title">Dhoom Machale &nbsp;</span><span class="music-artist">— Sunidhi Chauhan</span></div>
+      <div class="music-item"><span class="music-num">#3</span><span class="music-title">Hum Tum &nbsp;</span><span class="music-artist">— Alka Yagnik, Babul Supriyo</span></div>
+      <div class="music-item"><span class="music-num">#4</span><span class="music-title">Bheege Hont Tere &nbsp;</span><span class="music-artist">— Kunal Ganjawala</span></div>
+      <div class="music-item"><span class="music-num">#5</span><span class="music-title">Yeh Tara Woh Tara &nbsp;</span><span class="music-artist">— Udit Narayan (Swades)</span></div>
+      <div class="music-item"><span class="music-num">#6</span><span class="music-title">Yeah! &nbsp;</span><span class="music-artist">— Usher ft. Lil Jon</span></div>
+      <div class="music-item"><span class="music-num">#7</span><span class="music-title">Crazy in Love &nbsp;</span><span class="music-artist">— Beyoncé</span></div>
+
+      <div class="article-headline" style="margin-top:14px;">At the Cinema: May 1, 2004</div>
+      <div class="film-box">
+        <div class="film-item"><span class="film-title">Main Hoon Na &nbsp;</span><span class="film-detail">— Released just 24 hours before you were born!</span></div>
+        <div class="film-item"><span class="film-title">Veer-Zaara &nbsp;</span><span class="film-detail">— Defining Bollywood romance for a generation</span></div>
+        <div class="film-item"><span class="film-title">Hum Tum &nbsp;</span><span class="film-detail">— The iconic summer rom-com</span></div>
+        <div class="film-item"><span class="film-title">Dhoom &nbsp;</span><span class="film-detail">— Igniting a nationwide biking craze</span></div>
+        <div class="film-item"><span class="film-title">Swades &nbsp;</span><span class="film-detail">— A masterpiece that touched a million hearts</span></div>
+        <div class="film-item"><span class="film-title">Mean Girls &nbsp;</span><span class="film-detail">— A global pop culture phenomenon</span></div>
+        <div class="film-item"><span class="film-title">Harry Potter &nbsp;</span><span class="film-detail">— The Prisoner of Azkaban brings darker magic</span></div>
+        <div class="film-item"><span class="film-title">Shrek 2 &nbsp;</span><span class="film-detail">— The animated sequel breaking box office records</span></div>
+      </div>
+      
+      <div class="mini-trend-box">
+        <div style="font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 700; color: #5a3a1a; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px;">Also Trending in '04</div>
+        <div class="music-item" style="border:none;"><span class="music-num">✦</span><span class="music-title">Flip Phones &nbsp;</span><span class="music-artist">— The ultimate style statement</span></div>
+        <div class="music-item" style="border:none;"><span class="music-num">✦</span><span class="music-title">Orkut &nbsp;</span><span class="music-artist">— India's first social media obsession</span></div>
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="article-headline">A Harvard Student Just Changed the World</div>
+      <div class="article-byline">Tech Desk Report</div>
+      <div class="article-body drop-cap">
+        <p>Just three months before Riya's birth, on February 4, 2004, a young Harvard sophomore named Mark Zuckerberg launched "TheFacebook" — a social network that would one day connect over two billion people. By the time Riya took her first steps, the internet was already being reimagined.</p>
+        <p>The year 2004 also saw Google's initial public offering, forever altering how humanity searches for knowledge. The digital age that would shape Riya's generation was just beginning to bloom.</p>
+      </div>
+
+      <div class="article-headline sm" style="margin-top:10px;">Television That Defined the Era</div>
+      <div class="article-body" style="font-size:13px;">
+        <p>The beloved sitcom <em>Friends</em> aired its final episode on May 6, 2004 — just five days after Riya's arrival — with 52 million viewers tuning in to say goodbye. The era of great ensemble comedies was ending, and a new chapter was beginning.</p>
+      </div>
+
+      <div class="advert">
+        <div class="ad-title">Happy 21st Birthday, Riya!</div>
+        <div class="ad-body">Twenty-one years ago, you brought a brand new melody into this world. From your very first smile to the incredible woman you are today, you make every ordinary day feel like a blockbuster hit. Never stop shining, and never stop being exactly who you are.<br><br><em>With all my love — today, tomorrow, and always.</em></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quote-box">
+    <blockquote>"To the girl whose heart is as vibrant as a Bollywood classic, and whose spirit shines brighter than any star. Twenty-one never looked so good."</blockquote>
+    <div class="quote-attr">✦ &nbsp; A special message for Riya Gupta, on this, her 21st birthday &nbsp; ✦</div>
+  </div>
+
+  <hr class="section-divider">
+  <div class="section-label">More From the World — Spring 2004</div>
+
+  <div class="columns col-3">
+    <div class="article">
+      <div class="article-headline sm">Arsenal's Invincibles Win the Premier League Unbeaten</div>
+      <div class="article-body" style="font-size:13px;">
+        <p>In the weeks surrounding Riya's birth, Arsenal Football Club completed one of the greatest achievements in sporting history — an entire Premier League season without a single defeat. The team, dubbed "The Invincibles," drew 2–2 against Tottenham on April 25, sealing the title. Born in the same spring as The Invincibles — perhaps Riya has a little of their magic too.</p>
+      </div>
+    </div>
+    <div class="article">
+      <div class="article-headline sm">India Prepares for Historic Transition of Power</div>
+      <div class="article-body" style="font-size:13px;">
+        <p>The India that Riya was born into was on the cusp of change. In the very same month, general elections were taking place across the country — elections that would soon bring Dr. Manmohan Singh to power as Prime Minister. On May 22, 2004, he was sworn in as India's first Sikh head of government, marking a landmark moment in the nation's democratic history.</p>
+      </div>
+    </div>
+    <div class="article">
+      <div class="article-headline sm">Your Birthstone, Birth Flower & Lucky Stars</div>
+      <div class="article-body" style="font-size:13px;">
+        <p><strong style="color:#8b1a1a;">Emerald</strong> — the gemstone of May — symbolises renewal, growth, and love. In ancient times it was said to be the stone of Venus herself, goddess of beauty. A fitting stone for a Taurus girl.</p>
+        <p><strong style="color:#8b1a1a;">Lily of the Valley</strong> is May's birth flower, representing happiness and the return of joy. According to legend, it springs up wherever the tears of joy fall.</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    The Daily Chronicle &nbsp;✦&nbsp; Special Edition: The Birth of Riya &nbsp;✦&nbsp; May 1, 2004 &nbsp;✦&nbsp; May you always find something worth celebrating
+  </div>
+  <div class="ornament">— ✦ —</div>
+
+</div>
