@@ -1,4 +1,3 @@
-
 <style>
   @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
 
@@ -15,7 +14,7 @@
     color: #1a1008;
     font-family: 'EB Garamond', Georgia, serif;
     max-width: 860px;
-    margin: 0 auto;
+    margin: 0 auto 40px auto;
     padding: 0;
     border: 2px solid #2a1a08;
     box-shadow: 4px 4px 0 #b8975a;
@@ -106,7 +105,8 @@
   }
 
   .col-3 { grid-template-columns: 1fr 1fr 1fr; }
-  .col-2 { grid-template-columns: 1.4fr 1fr; }
+  /* Adjusted from 1.4fr to 1.15fr to move the border left and give the right column more space */
+  .col-2 { grid-template-columns: 1.15fr 1fr; } 
   .col-2b { grid-template-columns: 1fr 1.4fr; }
   .col-full { grid-template-columns: 1fr; }
 
@@ -253,7 +253,7 @@
     color: #f0e8d0;
   }
 
-.horoscope-box .sign {
+  .horoscope-box .sign {
     font-size: 36px;
     line-height: 1;
     margin-bottom: 4px;
@@ -289,7 +289,7 @@
     gap: 6px;
     padding: 2px 0;
     border-bottom: 1px dotted #c8a870;
-    font-size: 13px;
+    font-size: 12px; /* Slightly reduced to save space */
   }
   .music-item:last-child { border-bottom: none; }
   .music-num { color: #8b1a1a; font-weight: 700; min-width: 18px; font-size: 12px; }
@@ -333,9 +333,9 @@
 
   .advert {
     border: 2px solid #2a1a08;
-    padding: 8px;
+    padding: 6px; /* Tightened padding */
     text-align: center;
-    margin: 8px 0 0;
+    margin: 6px 0 0; /* Tightened margin */
     background: #f5ede0;
   }
 
@@ -386,25 +386,19 @@
   }
 
   .film-box {
-    margin-top: 8px;
+    margin-top: 6px; /* Tightened */
   }
   .film-item {
     display: flex;
     gap: 6px;
     align-items: baseline;
-    font-size: 13px;
+    font-size: 12px; /* Slightly reduced to save space */
     padding: 2px 0;
     border-bottom: 1px dotted #c8a870;
   }
   .film-item:last-child { border-bottom: none; }
   .film-title { font-weight: 700; color: #1a0a00; }
   .film-detail { color: #5a3a1a; font-style: italic; }
-
-  .heart-accent {
-    color: #8b1a1a;
-    font-size: 16px;
-    margin: 0 4px;
-  }
 
   .initial-circle {
     width: 80px;
@@ -437,11 +431,12 @@
     background: #fdf8f0;
     border: 1px solid #c8a870;
     border-top: 3px solid #d4a830;
-    padding: 10px;
-    margin-top: 15px;
+    padding: 8px;
+    margin-top: 8px; /* Tightened */
   }
 </style>
 
+<!-- PAGE 1 START -->
 <div class="newspaper paper-texture">
 
   <div class="masthead">
@@ -463,7 +458,7 @@
   </div>
 
   <div class="stat-row">
-    <div class="stat-item"><div class="stat-num">21</div><div class="stat-lbl">Years Young Today</div></div>
+    <div class="stat-item"><div class="stat-num">22</div><div class="stat-lbl">Years Young Today</div></div>
     <div class="stat-item"><div class="stat-num">May 1</div><div class="stat-lbl">Labour Day</div></div>
     <div class="stat-item"><div class="stat-num">Taurus</div><div class="stat-lbl">Zodiac Sign</div></div>
     <div class="stat-item"><div class="stat-num">Emerald</div><div class="stat-lbl">Birthstone</div></div>
@@ -532,7 +527,12 @@
     </div>
   </div>
 
-  <hr class="section-divider" style="page-break-before: always;">
+</div>
+<!-- PAGE 1 END -->
+
+
+<!-- PAGE 2 START -->
+<div class="newspaper paper-texture">
 
   <div class="section-label">Entertainment & Culture — What Was Trending</div>
 
@@ -551,7 +551,8 @@
       <div class="music-item"><span class="music-num">#6</span><span class="music-title">Yeah! &nbsp;</span><span class="music-artist">— Usher ft. Lil Jon</span></div>
       <div class="music-item"><span class="music-num">#7</span><span class="music-title">Crazy in Love &nbsp;</span><span class="music-artist">— Beyoncé</span></div>
 
-      <div class="article-headline" style="margin-top:14px;">At the Cinema: May 1, 2004</div>
+      <!-- Tightened margin-top slightly -->
+      <div class="article-headline" style="margin-top:10px;">At the Cinema: May 1, 2004</div>
       <div class="film-box">
         <div class="film-item"><span class="film-title">Main Hoon Na &nbsp;</span><span class="film-detail">— Released just 24 hours before you were born!</span></div>
         <div class="film-item"><span class="film-title">Veer-Zaara &nbsp;</span><span class="film-detail">— Defining Bollywood romance for a generation</span></div>
@@ -584,7 +585,7 @@
       </div>
 
       <div class="advert">
-        <div class="ad-title">Happy 21st Birthday, Riya!</div>
+        <div class="ad-title">Happy 22st Birthday, Riya!</div>
         <div class="ad-body">Twenty-one years ago, you brought a brand new melody into this world. From your very first smile to the incredible woman you are today, you make every ordinary day feel like a blockbuster hit. Never stop shining, and never stop being exactly who you are.<br><br><em>With all my love — today, tomorrow, and always.</em></div>
       </div>
     </div>
@@ -625,3 +626,4 @@
   <div class="ornament">— ✦ —</div>
 
 </div>
+<!-- PAGE 2 END -->
